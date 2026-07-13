@@ -1,0 +1,11 @@
+[{:itonami.blueprint/id "cloud-itonami-isco-1213"
+  :itonami.blueprint/name "Community Policy & Planning"
+  :itonami.blueprint/isco-08 "1213"
+  :itonami.blueprint/domain :business/policy-planning
+  :itonami.blueprint/license "AGPL-3.0-or-later"
+  :itonami.blueprint/social-impact [:operational-transparency :evidence-based-policy :local-jobs]
+  :itonami.blueprint/governor :policy-planning-governor
+  :itonami.blueprint/robotics true
+  :itonami.blueprint/required-technologies [:robotics :identity :forms :dmn :bpmn :audit-ledger]
+  :itonami.blueprint/status :public-oss
+  :db/id -1}]
