@@ -8,7 +8,8 @@
 
   A proposal: {:op :adopt-policy|:draft-plan|:repeal-policy
                :effect :propose :control-point str :directive kw
-               :scope kw :stake kw :confidence n :rationale str}")
+               :scope kw :stake kw :confidence n :rationale str}"
+  (:require #?(:clj [clojure.edn :as edn] :cljs [cljs.reader :as edn])))
 
 (defprotocol Advisor
   (-advise [advisor store request] "request -> proposal map"))
@@ -35,7 +36,7 @@
 
 (defn- parse-proposal [content]
   (try
-    (let [p (read-string content)]
+    (let [p (edn/read-string content)]
       (if (map? p)
         (assoc p :effect :propose)
         {:op :unknown :effect :propose :confidence 0.0 :stake :high
