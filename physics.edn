@@ -1,0 +1,34 @@
+;; What this vertical's robot physically does, declared for
+;; kotoba.robotics.process (kotoba-lang/robotics). `kbb -M:physics` runs it.
+;;
+;; The README declares policy and planning management (ISCO 1213) a wave-1
+;; "design & governance" occupation with no robotics gate: the core work is
+;; cognitive. The residual physical work a robot would do for a planning
+;; office is producing and distributing consultation papers: loading paper
+;; into the production printer and delivering the printed packs across the
+;; civic centre before a hearing.
+;;
+;; Every number without a cited source is marked `estimate` in its :basis.
+;; Replacing an estimate with a sourced value is this bot's growth work.
+{:physics/schema "itonami.physical-ai.spec.v1"
+ :repo "cloud-itonami/cloud-itonami-isco-1213"
+ :cases
+ [{:id :printer-feeder-load
+   :kind :manipulator
+   :procedure "arm lifts a bundle of paper reams from the supply cart into the production printer's high-capacity feeder"
+   :params {:l1-m 0.50 :l2-m 0.45 :m1-kg 4.5 :m2-kg 3.2
+            :from [0.55 0.00] :to [0.35 0.55] :duration-s 1.5 :steps 400}
+   :sweep {:param :payload-kg :values [2.5 5.0 7.5 10.0 12.5]}
+   :quantity :peak-tau1-nm
+   :limit {:max 90.0 :basis "estimate: continuous shoulder torque of a ~10 kg-payload collaborative arm"}
+   :boundary {:lo 0.5 :hi 40.0}}
+  {:id :consultation-pack-delivery
+   :kind :transport
+   :procedure "delivery robot carries boxes of printed consultation packs 120 m across the civic centre to the hearing room"
+   :params {:mass-kg 40.0 :distance-m 120.0 :v-max-mps 1.2 :a-max-mps2 0.5
+            :brake-decel-mps2 0.8 :drive-force-n 50.0 :crr 0.02
+            :cog-height-m 0.45 :support-half-length-m 0.25}
+   :sweep {:param :payload-kg :values [10.0 30.0 60.0 90.0 120.0]}
+   :quantity :cycle-time-s
+   :limit {:max 125.0 :basis "estimate: each delivery trip inside a ~2-minute slot so all packs reach the room before the hearing opens"}
+   :boundary {:lo 1.0 :hi 200.0}}]}
