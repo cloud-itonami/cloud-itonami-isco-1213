@@ -1,7 +1,7 @@
 (ns policyplan.governor
   "PolicyPlanningManagementGovernor — the independent safety/
   traceability layer for the ISCO-08 1213 community policy & planning
-  actor (itonami actor pattern, ADR-2607011000 / CLAUDE.md Actors
+  actor (itonami actor pattern, ADR-2607011000 / AGENTS.md Actors
   section). Modeled on cloud-itonami-isco-4311's bookkeeping.governor.
   Policy-planning twist: the mandate is a REGISTERED set and a policy
   contradiction is a set comparison — jurisdiction is not a mood, and
